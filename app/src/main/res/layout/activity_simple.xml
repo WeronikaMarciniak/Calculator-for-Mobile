@@ -38,15 +38,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/backspace"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="#2196F3"
-                    android:onClick="backspace"
-                    android:text="Backspace" />
-
 
                 <Button
                     android:id="@+id/allClear"
@@ -81,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="#009688"
-                    android:onClick="multiplication"
+                    android:onClick="mul"
                     android:text="*" />
             </LinearLayout>
 
@@ -96,7 +87,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="#3F51B5"
-                    android:onClick="addButton1"
+                    android:onClick="add1"
                     android:text="1" />
 
                 <Button
@@ -105,7 +96,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="#3F51B5"
-                    android:onClick="addButton2"
+                    android:onClick="add2"
                     android:text="2" />
 
                 <Button
@@ -114,7 +105,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="#3F51B5"
-                    android:onClick="addButton3"
+                    android:onClick="add3"
                     android:text="3" />
 
                 <Button
@@ -123,7 +114,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="#009688"
-                    android:onClick="division"
+                    android:onClick="div"
                     android:text="/" />
             </LinearLayout>
 
@@ -138,7 +129,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="#3F51B5"
-                    android:onClick="addButton4"
+                    android:onClick="add4"
                     android:text="4" />
 
                 <Button
@@ -147,7 +138,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="#3F51B5"
-                    android:onClick="addButton5"
+                    android:onClick="add5"
                     android:text="5" />
 
                 <Button
@@ -156,7 +147,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="#3F51B5"
-                    android:onClick="addButton6"
+                    android:onClick="add6"
                     android:text="6" />
 
                 <Button
@@ -165,7 +156,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="#009688"
-                    android:onClick="addition"
+                    android:onClick="add"
                     android:text="+" />
             </LinearLayout>
 
@@ -180,7 +171,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="#3F51B5"
-                    android:onClick="addButton7"
+                    android:onClick="add7"
                     android:text="7" />
 
                 <Button
@@ -189,7 +180,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="#3F51B5"
-                    android:onClick="addButton8"
+                    android:onClick="add8"
                     android:text="8" />
 
                 <Button
@@ -198,7 +189,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="#3F51B5"
-                    android:onClick="addButton9"
+                    android:onClick="add9"
                     android:text="9" />
 
                 <Button
@@ -207,7 +198,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="#009688"
-                    android:onClick="subtraction"
+                    android:onClick="sub"
                     android:text="-" />
             </LinearLayout>
 
@@ -222,7 +213,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="#3F51B5"
-                    android:onClick="addButton0"
+                    android:onClick="add0"
                     android:text="0" />
 
                 <Button
