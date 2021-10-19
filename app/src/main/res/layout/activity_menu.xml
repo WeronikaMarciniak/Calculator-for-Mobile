@@ -35,7 +35,8 @@
 
             android:text="Advanced Calculator"
             android:textColor="@color/white"
-            app:backgroundTint="#2196F3" />
+            app:backgroundTint="#2196F3"
+            tools:onClick="moveToAdvCalc" />
 
 
         <Button
