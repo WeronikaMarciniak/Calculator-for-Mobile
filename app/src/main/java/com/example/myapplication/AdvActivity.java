@@ -3,12 +3,16 @@ package com.example.myapplication;
 import android.content.Context;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GestureDetectorCompat;
 
+import android.os.Handler;
+import android.widget.Button;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class AdvActivity extends AppCompatActivity {
+public class AdvActivity extends AppCompatActivity{
 
     private static final String OPERATION_NO_SELECT = "Nie wybrano operacji";
     private static final String DIV_BY_ZERO = "Nie mozna dzielic przez zero";
@@ -23,6 +27,8 @@ public class AdvActivity extends AppCompatActivity {
     private double secondNumber;
     private CalcOperation operation = CalcOperation.NONE;
     private boolean clickOperation;
+    private static final String DEBUG_TAG = "Gestures";
+    private GestureDetectorCompat mDetector;
 
     private StringBuilder input;
 
@@ -45,7 +51,36 @@ public class AdvActivity extends AppCompatActivity {
             operation = CalcOperation.valueOf(operationString);
             input.append(savedInstanceState.getString(INPUT));
         }
+        final int[] i = {0};
+        Button btn = findViewById(R.id.clear);
+        btn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                i[0]++;
+                Handler handler = new Handler();
+                Runnable r = new Runnable() {
+
+                    @Override
+                    public void run() {
+                        i[0] = 0;
+                    }
+                };
+                if (i[0] == 1) {
+                    //Single click
+                    handler.postDelayed(r, 250);
+                    clear(v);
+                } else if (i[0] == 2) {
+                    //Double click
+                    i[0] = 0;
+                    allClear(v);
+
+                }
+            }
+        });
     }
+
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
@@ -57,19 +92,19 @@ public class AdvActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
     }
 
-    public void multiplication(View view) {
+    public void mul(View view) {
         addNumbers(CalcOperation.MUL);
     }
 
-    public void addition(View view) {
+    public void add(View view) {
         addNumbers(CalcOperation.ADD);
     }
 
-    public void subtraction(View view) {
+    public void sub(View view) {
         addNumbers(CalcOperation.SUB);
     }
 
-    public void division(View view) {
+    public void div(View view) {
         addNumbers(CalcOperation.DIV);
     }
 
@@ -100,22 +135,19 @@ public class AdvActivity extends AppCompatActivity {
         operation = operation.NONE;
     }
 
-    public void backspace(View view) {
-        if(input.length() > 0){
-            input = input.deleteCharAt(input.length() - 1);
-        }
-        refreshInput();
-    }
-
     public void refreshInput(){
         textView.setText(input);
     }
 
     public void clear(View view) {
+        if(input.length() > 0){
+            input = input.deleteCharAt(input.length() - 1);
+        }
+        refreshInput();
+    }
+    public void allClear(View view) {
         operation = CalcOperation.NONE;
         clickOperation = false;
-        firstNumber = 0;
-        secondNumber = 0;
         input.setLength(0);
         refreshInput();
     }
@@ -237,61 +269,61 @@ public class AdvActivity extends AppCompatActivity {
         refreshInput();
     }
 
-    public void addButton0(View view) {
+    public void add0(View view) {
         checkZero();
         input.append("0");
         refreshInput();
     }
 
-    public void addButton1(View view) {
+    public void add1(View view) {
         checkZero();
         input.append("1");
         refreshInput();
     }
 
-    public void addButton2(View view) {
+    public void add2(View view) {
         checkZero();
         input.append("2");
         refreshInput();
     }
 
-    public void addButton3(View view) {
+    public void add3(View view) {
         checkZero();
         input.append("3");
         refreshInput();
     }
 
-    public void addButton4(View view) {
+    public void add4(View view) {
         checkZero();
         input.append("4");
         refreshInput();
     }
 
-    public void addButton5(View view) {
+    public void add5(View view) {
         checkZero();
         input.append("5");
         refreshInput();
     }
 
-    public void addButton6(View view) {
+    public void add6(View view) {
         checkZero();
         input.append("6");
         refreshInput();
     }
 
-    public void addButton7(View view) {
+    public void add7(View view) {
         checkZero();
         input.append("7");
         refreshInput();
     }
 
-    public void addButton8(View view) {
+    public void add8(View view) {
         checkZero();
         input.append("8");
         refreshInput();
     }
 
-    public void addButton9(View view) {
+    public void add9(View view) {
         checkZero();
         input.append("9");
         refreshInput();
@@ -390,4 +422,5 @@ public class AdvActivity extends AppCompatActivity {
             operation = CalcOperation.POWY;
         }
     }
+
 }

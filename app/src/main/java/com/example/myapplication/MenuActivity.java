@@ -16,11 +16,12 @@ public class MenuActivity extends AppCompatActivity{
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+
     public void moveToAdvCalc(View view) {
         Intent intent = new Intent(this, AdvActivity.class);
         startActivity(intent);
     }
-
 
     public void moveToExit(View view) {
      finish();

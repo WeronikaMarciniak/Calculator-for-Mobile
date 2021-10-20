@@ -6,20 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GestureDetectorCompat;
 
 import android.content.Context;
-import android.util.Log;
-import android.view.GestureDetector;
-import android.view.GestureDetector.OnGestureListener;
-import android.view.GestureDetector.OnDoubleTapListener;
-import android.view.MotionEvent;
+import android.os.Handler;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Bundle;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity implements
-        GestureDetector.OnGestureListener,
-        GestureDetector.OnDoubleTapListener{
+public class MainActivity extends AppCompatActivity {
     private static final String OPERATION_NO_SELECT = "Nie wybrano operacji";
     private static final String DIV_BY_ZERO = "Nie mozna dzielic przez zero";
     private static final String FIRST_NUMBER = "firstNumber";
@@ -57,10 +51,34 @@ public class MainActivity extends AppCompatActivity implements
             operation = CalcOperation.valueOf(operationString);
             input.append(savedInstanceState.getString(INPUT));
         }
-        mDetector = new GestureDetectorCompat(this,this);
-        // Set the gesture detector as the double tap
-        // listener.
-        mDetector.setOnDoubleTapListener(this);
+        final int[] i = {0};
+        Button btn = findViewById(R.id.clear);
+        btn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                i[0]++;
+                Handler handler = new Handler();
+                Runnable r = new Runnable() {
+
+                    @Override
+                    public void run() {
+                        i[0] = 0;
+                    }
+                };
+                if (i[0] == 1) {
+                    //Single click
+                    handler.postDelayed(r, 250);
+                    clear(v);
+                } else if (i[0] == 2) {
+                    //Double click
+                    i[0] = 0;
+                    allClear(v);
+
+                }
+            }
+        });
 
     }
     @Override
@@ -117,47 +135,15 @@ public class MainActivity extends AppCompatActivity implements
         operation = operation.NONE;
     }
 
-    /*public void backspace(View view) {
-        if(input.length() > 0){
-            input = input.deleteCharAt(input.length() - 1);
-        }
-        refreshInput();
-    }*/
-
     public void refreshInput(){
         textView.setText(input);
     }
 
     public void clear(View view) {
-
-        /*operation = CalcOperation.NONE;
-        clickOperation = false;
-        firstNumber = 0;
-        secondNumber = 0;
-
-        if(input.length() > 0){
-            input = input.deleteCharAt(input.length() - 1);
-        }
-        else {
-            allClear(view);
-        }
-        refreshInput();*/
-        //MotionEvent e=null;
-
-        //if(onSingleTapConfirmed(e)==true){
             if(input.length() > 0){
                 input = input.deleteCharAt(input.length() - 1);
             }
             refreshInput();
-       // }
-        /*if(onDoubleTap(e)==true)
-        {
-            operation = CalcOperation.NONE;
-            clickOperation = false;
-            input.setLength(0);
-            refreshInput();
-        }*/
-
     }
     public void allClear(View view) {
         operation = CalcOperation.NONE;
@@ -321,53 +307,4 @@ public class MainActivity extends AppCompatActivity implements
         refreshInput();
     }
 
-    @Override
-    public boolean onSingleTapConfirmed(MotionEvent e) {
-        return true;
-    }
-
-
-    @Override
-    public boolean onDoubleTap(MotionEvent e) {
-        //Log.d(DEBUG_TAG, "onDoubleTap: " + e.toString());
-        return true;
-
-    }
-
-    @Override
-    public boolean onDoubleTapEvent(MotionEvent e) {
-       // Log.d(DEBUG_TAG, "onDoubleTapEvent: " + e.toString());
-        return true;
-
-    }
-
-    @Override
-    public boolean onDown(MotionEvent e) {
-        return false;
-    }
-
-    @Override
-    public void onShowPress(MotionEvent e) {
-
-    }
-
-    @Override
-    public boolean onSingleTapUp(MotionEvent e) {
-        return false;
-    }
-
-    @Override
-    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-        return false;
-    }
-
-    @Override
-    public void onLongPress(MotionEvent e) {
-
-    }
-
-    @Override
-    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-        return false;
-    }
 }

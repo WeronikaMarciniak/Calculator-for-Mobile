@@ -33,10 +33,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
+            android:onClick="moveToAdvCalc"
             android:text="Advanced Calculator"
             android:textColor="@color/white"
-            app:backgroundTint="#2196F3"
-            tools:onClick="moveToAdvCalc" />
+            app:backgroundTint="#2196F3" />
 
 
         <Button
