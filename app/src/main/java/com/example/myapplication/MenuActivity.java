@@ -22,6 +22,10 @@ public class MenuActivity extends AppCompatActivity{
         Intent intent = new Intent(this, AdvActivity.class);
         startActivity(intent);
     }
+    public void moveToAbout(View view) {
+        Intent intent = new Intent(this, AboutActivity.class);
+        startActivity(intent);
+    }
 
     public void moveToExit(View view) {
      finish();

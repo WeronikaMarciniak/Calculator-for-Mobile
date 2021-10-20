@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String CLICK_OPERATION = "clickOperation";
     private static final String OPERATION = "operation";
     private static final String INPUT = "input";
+    private static final String DATA_VALIDATOR = "Nieprawidlowy typ danych";
     private TextView textView;
     private double firstNumber;
     private double secondNumber;
@@ -203,6 +204,7 @@ public class MainActivity extends AppCompatActivity {
             refreshInput();
             return true;
         }catch(NumberFormatException ignored){
+            addToast(DATA_VALIDATOR);
             return false;
         }
     }
@@ -215,6 +217,7 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         catch(NumberFormatException ignored){
+            addToast(DATA_VALIDATOR);
             return false;
         }
     }
